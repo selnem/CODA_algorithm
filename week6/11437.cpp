@@ -2,8 +2,14 @@
 #include<vector>
 #include<queue>
 using namespace std;
+void BFS(vector<vector<int> > &T,vector<int> &parent,vector<int> &d,int size);
+int LCA(int u,int v,vector<int>&d,vector<int>&p);
+
 int main(){
-    int N;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    int N,M;
     int u,v;
     cin>>N;
     vector< vector<int> >Tre(N+1);
@@ -12,8 +18,14 @@ int main(){
         Tre[u].push_back(v);
         Tre[v].push_back(u);
     }
+    cin>>M;
     vector<int> parent(N+1,0);
     vector<int> d(N+1,0);
+    BFS(Tre,parent,d,N);
+    for(int i=0;i<M;i++){
+        cin>>u>>v;
+        cout<<LCA(u,v,d,parent)<<'\n';
+    }
     return 0;
 }
 void BFS(vector<vector<int> > &T,vector<int> &parent,vector<int> &d,int size){
@@ -35,5 +47,11 @@ void BFS(vector<vector<int> > &T,vector<int> &parent,vector<int> &d,int size){
 
 }
 int LCA(int u,int v,vector<int>&d,vector<int>&p){
-    
+    if(d[u]>d[v]) swap(u,v);
+    while(d[u]!=d[v]) v=p[v];
+    while(u!=v){
+        u=p[u];
+        v=p[v];
+    }
+    return u;
 }
