@@ -31,6 +31,7 @@ void ans(){
     }
     int ans=dijk(N,M,mapp);
     if(ans==INT_MAX) cout<<"Poor KCM"<<'\n';
+    
     else cout<<ans<<'\n';
 }
 int dijk(int N,int M,vector<vector<Tup> > &mapp){
