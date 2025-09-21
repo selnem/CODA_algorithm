@@ -49,5 +49,18 @@
         "algorithm": "cpp",
         "map": "cpp",
         "set": "cpp"
-    }
+    },
+    "clangd.arguments": [
+    "--compile-commands-dir=.",
+    "--header-insertion=never",
+    "--completion-style=detailed",
+    "--background-index"
+  ],
+
+  // MS C++ 확장 끄기 (선택)
+  "C_Cpp.intelliSenseEngine": "Disabled",
+  "C_Cpp.autocomplete": "Disabled",
+  "C_Cpp.errorSquiggles": "Disabled",
+    
+    
 }
