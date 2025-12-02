@@ -34,7 +34,7 @@ inline bool inRange(int r, int c){
     return 0<=r&&r<N&&0<=c&&c<M;
 }
 void bfs(const int r,const int c){
-int dist[51][51];
+    int dist[51][51];
     memset(dist, -1, sizeof(dist));
     queue<pair<int,int>> q;
     q.push({r,c});

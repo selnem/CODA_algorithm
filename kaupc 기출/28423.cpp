@@ -4,8 +4,8 @@
 #include<string.h>
 using namespace std;
 
-map<int,int> memoF;
 bool vis[100001];
+int memo[100001]={0};
 int f_fun(int n);
 int g_fun(int n,int cmp);
 int mul_fun(int x);
@@ -33,10 +33,8 @@ int mul_fun(int x){
     }
     return ans;
 }
-int f_fun(int n){
-    if(memoF.find(n)!=memoF.end()) return memoF[n];
-    memoF[n]=stoi(to_string(add_fun(n))+to_string(mul_fun(n)));
-    return memoF[n];
+inline int f_fun(int n){
+    return stoi(to_string(add_fun(n))+to_string(mul_fun(n)));
 }
 int g_fun(int n,int cmp){
     if(vis[n]) return 0;
@@ -44,7 +42,7 @@ int g_fun(int n,int cmp){
     if(n==cmp) return 1;
     if(n==0) return n;
     vis[n]=true;
-    return g_fun(f_fun(n),cmp);
+     g_fun(f_fun(n),cmp);
 }
 int sol(int L,int R){
     int ans=0;
